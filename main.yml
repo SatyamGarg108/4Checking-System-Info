@@ -1,0 +1,31 @@
+---
+- name: Full System Audit
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+
+  vars:
+    output_file: ./system_audit_report3.txt
+
+  tasks:
+    - name: Include system information tasks
+      include_tasks: sysinfo.yml
+
+    - name: Include running services tasks
+      include_tasks: process.yml
+
+    - name: Include installed packages tasks
+      include_tasks: packetinfo.yml
+
+    - name: Write raw output to file
+      copy:
+        content: |
+          === SYSTEM INFO ===
+          {{ sysinfo_text }}
+
+          === RUNNING SERVICES ===
+          {{ process_text }}
+
+          === INSTALLED PACKAGES ===
+          {{ package_text }}
+        dest: "{{ output_file }}"

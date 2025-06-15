@@ -1,0 +1,8 @@
+=== SYSTEM INFO ===
+{'include': 'sysinfo.yml', 'include_args': {}, 'changed': False}
+
+=== RUNNING SERVICES ===
+{'include': 'process.yml', 'include_args': {}, 'changed': False}
+
+=== INSTALLED PACKAGES ===
+{'include': 'packetinfo.yml', 'include_args': {}, 'changed': False}
